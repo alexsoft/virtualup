@@ -6,15 +6,15 @@ sudo apt-get install python-software-properties
 # add repo for php5.5
 sudo add-apt-repository ppa:ondrej/php5
 
-if ! [ -f 'nginx_signing.key' ]
+if ! [ -f 'nginx_signing.key' ]; then
 	# add key for nginx
 	cd ~
 	wget http://nginx.org/keys/nginx_signing.key
 fi
 sudo apt-key add nginx_signing.key
 
-sudo echo 'deb http://nginx.org/packages/ubuntu/ precise nginx' >> /etc/apt/sources.list
-sudo echo 'deb-src http://nginx.org/packages/ubuntu/ precise nginx' >> /etc/apt/sources.list
+sudo sh -c 'echo "deb http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list'
+sudo sh -c 'echo "deb-src http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list'
 
 sudo apt-get update
 sudo apt-get upgrade -y
