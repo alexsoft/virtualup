@@ -4,7 +4,7 @@
 
 sudo apt-get install python-software-properties
 # add repo for php5.5
-sudo add-apt-repository ppa:ondrej/php5
+sudo add-apt-repository ppa:ondrej/php5 -y
 
 if ! [ -f 'nginx_signing.key' ]; then
 	# add key for nginx
