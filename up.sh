@@ -49,3 +49,5 @@ sudo chown asft:asft -R /asft/
 cd /var
 sudo mkdir www
 sudo chown asft:asft -R www/
+
+sudo reboot
