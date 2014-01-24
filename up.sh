@@ -2,6 +2,7 @@
 
 # Ubuntu 12.04 Precise Pangolin
 
+sudo apt-get install python-software-properties
 # add repo for php5.5
 sudo add-apt-repository ppa:ondrej/php5
 
