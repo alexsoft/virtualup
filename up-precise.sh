@@ -2,7 +2,7 @@
 
 # Ubuntu 12.04 Precise Pangolin
 
-sudo apt-get install python-software-properties
+sudo apt-get install python-software-properties curl wget -y
 # add repo for php5.5
 sudo add-apt-repository ppa:ondrej/php5 -y
 
@@ -12,20 +12,21 @@ if ! [ -f 'nginx_signing.key' ]; then
 	wget http://nginx.org/keys/nginx_signing.key
 fi
 sudo apt-key add nginx_signing.key
+rm nginx_signing.key
 
 sudo sh -c 'echo "deb http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list'
 sudo sh -c 'echo "deb-src http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list'
 
 sudo apt-get update
 sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
 
-sudo apt-get install -y build-essential git nginx php5 php5-cgi php5-cli \
-php5-common php5-curl php5-json php5-mcrypt php5-mysql
-
-# Install MySQL
+# Set MySQL root password
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-sudo apt-get -y install mysql-server
+
+sudo apt-get install -y build-essential git nginx php5 php5-cgi php5-cli php5-gd \
+php5-common php5-curl php5-json php5-mcrypt php5-mysql mysql-server
 
 # Composer
 curl -sS https://getcomposer.org/installer | php
@@ -34,9 +35,13 @@ sudo mv composer.phar /usr/local/bin/composer
 cd ~
 mkdir .ssh
 cd ~/.ssh
-USER="asft@"
+if [ -n "$1" ]; then
+	USER='asft'
+else
+	USER="$1"
+fi
 HOST=$HOSTNAME
-ssh-keygen -f id_rsa -t rsa -N '' -C $USER$HOST
+ssh-keygen -f id_rsa -t rsa -N '' -C $USER'@'$HOST
 
 # Setup Authorized Keys
 cd ~/.ssh
