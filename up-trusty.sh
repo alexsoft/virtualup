@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Ubuntu 12.04 Precise Pangolin
+# Ubuntu 14.04 Trusty Tahr
 
 sudo apt-get install python-software-properties
 # add repo for php5.5
@@ -13,13 +13,13 @@ if ! [ -f 'nginx_signing.key' ]; then
 fi
 sudo apt-key add nginx_signing.key
 
-sudo sh -c 'echo "deb http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list'
-sudo sh -c 'echo "deb-src http://nginx.org/packages/ubuntu/ precise nginx" >> /etc/apt/sources.list'
+sudo sh -c 'echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list'
+sudo sh -c 'echo "deb-src http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list'
 
 sudo apt-get update
 sudo apt-get upgrade -y
 
-sudo apt-get install -y build-essential git nginx php5 php5-cgi php5-cli \
+sudo apt-get install -y build-essential git nginx php5 php5-cgi php5-cli php5-gd \
 php5-common php5-curl php5-json php5-mcrypt php5-mysql
 
 # Install MySQL
