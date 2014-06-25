@@ -34,7 +34,9 @@ sudo mv composer.phar /usr/local/bin/composer
 cd ~
 mkdir .ssh
 cd ~/.ssh
-ssh-keygen -f id_rsa -t rsa -N ''
+USER="asft@"
+HOST=$HOSTNAME
+ssh-keygen -f id_rsa -t rsa -N '' -C $USER$HOST
 
 # Setup Authorized Keys
 cd ~/.ssh
