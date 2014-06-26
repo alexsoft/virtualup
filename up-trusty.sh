@@ -6,6 +6,19 @@ sudo apt-get install python-software-properties curl wget -y
 # add repo for php5.5
 sudo add-apt-repository ppa:ondrej/php5 -y
 
+while getopts "n" OPTION
+do
+	case $OPTION in
+		n)
+			NODE=1
+			;;
+	esac
+done
+
+if [ $NODE = 1 ]; then
+	sudo add-apt-repository ppa:chris-lea/node.js -y
+fi
+
 if ! [ -f 'nginx_signing.key' ]; then
 	# add key for nginx
 	cd ~
@@ -25,8 +38,12 @@ sudo apt-get dist-upgrade -y
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
-sudo apt-get install -y build-essential git nginx php5 php5-cgi php5-cli php5-gd \
-php5-common php5-curl php5-json php5-mcrypt php5-mysql mysql-server
+sudo apt-get install build-essential git nginx php5 php5-cgi php5-cli php5-gd \
+php5-common php5-curl php5-json php5-mcrypt php5-mysql mysql-server -y
+
+if [ $NODE = 1 ]; then
+	sudo apt-get install nodejs -y
+fi
 
 # Composer
 curl -sS https://getcomposer.org/installer | php
