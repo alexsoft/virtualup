@@ -4,7 +4,7 @@
 
 sudo apt-get install python-software-properties curl wget -y
 # add repo for php5.5
-sudo add-apt-repository ppa:ondrej/php5 -y
+sudo add-apt-repository ppa:ondrej/php5-5.6 -y
 
 while getopts "n" OPTION
 do
