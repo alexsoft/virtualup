@@ -74,4 +74,6 @@ cd /var
 sudo mkdir www
 sudo chown asft:asft -R www/
 
+sudo apt-get autoremove -y
+
 sudo reboot
