@@ -19,16 +19,7 @@ if [ $NODE = 1 ]; then
 	sudo add-apt-repository ppa:chris-lea/node.js -y
 fi
 
-if ! [ -f 'nginx_signing.key' ]; then
-	# add key for nginx
-	cd ~
-	wget http://nginx.org/keys/nginx_signing.key
-fi
-sudo apt-key add nginx_signing.key
-rm nginx_signing.key
-
-sudo sh -c 'echo "deb http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list'
-sudo sh -c 'echo "deb-src http://nginx.org/packages/ubuntu/ trusty nginx" >> /etc/apt/sources.list'
+sudo apt-add-repository ppa:nginx/stable -y
 
 sudo apt-get update
 sudo apt-get upgrade -y
