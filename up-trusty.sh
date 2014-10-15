@@ -4,22 +4,9 @@
 
 sudo apt-get install python-software-properties curl wget -y
 # add repo for php5.5
-sudo add-apt-repository ppa:ondrej/php5-5.6 -y
-
-while getopts "n" OPTION
-do
-	case $OPTION in
-		n)
-			NODE=1
-			;;
-	esac
-done
-
-if [ $NODE = 1 ]; then
-	sudo add-apt-repository ppa:chris-lea/node.js -y
-fi
-
 sudo apt-add-repository ppa:nginx/stable -y
+sudo add-apt-repository ppa:ondrej/php5-5.6 -y
+sudo add-apt-repository ppa:chris-lea/node.js -y
 
 sudo apt-get update
 sudo apt-get upgrade -y
