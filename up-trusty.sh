@@ -17,11 +17,7 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
 sudo apt-get install build-essential git nginx php5 php5-cgi php5-cli php5-fpm \
-php5-gd php5-common php5-curl php5-json php5-mcrypt php5-mysql mysql-server -y
-
-if [ $NODE = 1 ]; then
-	sudo apt-get install nodejs -y
-fi
+php5-gd php5-common php5-curl php5-json php5-mcrypt php5-mysql mysql-server nodejs -y
 
 # Composer
 curl -sS https://getcomposer.org/installer | php
